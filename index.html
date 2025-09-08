@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Catálogo de Filmes e Séries</title>
+    <style>
+        /* Estilos CSS básicos para o site */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .header {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .nav a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Meu Catálogo de Filmes e Séries</h1>
+        <p>Descubra os melhores títulos para assistir!</p>
+    </header>
+
+    <nav class="nav">
+        <a href="#">Início</a>
+        <a href="#">Filmes</a>
+        <a href="#">Séries</a>
+        <a href="#">Contato</a>
+    </nav>
+
+    <main class="container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300x450" alt="Pôster do Filme 1">
+            <div class="card-content">
+                <h3>Título do Filme 1</h3>
+                <p>Ano: 2023 | Gênero: Ação</p>
+                <p>Uma breve descrição do filme que cativa a atenção do espectador.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x450" alt="Pôster da Série 1">
+            <div class="card-content">
+                <h3>Título da Série 1</h3>
+                <p>Ano: 2022 | Gênero: Drama</p>
+                <p>Uma breve descrição da série que faz com que as pessoas queiram assistir.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x450" alt="Pôster do Filme 2">
+            <div class="card-content">
+                <h3>Título do Filme 2</h3>
+                <p>Ano: 2024 | Gênero: Ficção Científica</p>
+                <p>Outra descrição para um filme diferente.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Meu Catálogo. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
