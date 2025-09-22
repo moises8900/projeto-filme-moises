@@ -1,38 +1,56 @@
 /* Estilos CSS para o site de filmes e séries */
 
+/* Usando variáveis para facilitar a personalização */
+:root {
+    --fundo-principal: #000000;
+    --texto-claro: #F5F5F5;
+    --texto-escuro: #A0A0A0;
+    --cor-destaque: #E50914; /* Um vermelho vibrante para os títulos, por exemplo */
+    --fundo-card: #1C1C1C;
+    --sombra-card: rgba(255, 255, 255, 0.1);
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
-    background-color: #000000;
-    color: #333;
+    background-color: var(--fundo-principal); /* Fundo preto */
+    color: var(--texto-claro); /* Texto branco/claro */
 }
 
 /* Estilo do cabeçalho */
 .header {
-    background-color: #222;
-    color: white;
+    background-color: var(--fundo-card);
+    color: var(--texto-claro);
     padding: 20px;
     text-align: center;
+    border-bottom: 2px solid var(--cor-destaque);
+}
+
+.header h1 {
+    color: var(--cor-destaque);
+}
+
+.header p {
+    color: var(--texto-escuro);
 }
 
 /* Estilo da navegação */
 .nav {
-    background-color: #333;
+    background-color: var(--fundo-card);
     overflow: hidden;
     text-align: center;
 }
 
 .nav a {
     display: inline-block;
-    color: white;
-    text-align: center;
+    color: var(--texto-claro);
     padding: 14px 20px;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .nav a:hover {
-    background-color: #575757;
+    background-color: #333;
 }
 
 /* Container principal dos cards */
@@ -46,9 +64,9 @@ body {
 
 /* Estilo dos cartões (cards) de filmes e séries */
 .card {
-    background-color: white;
+    background-color: var(--fundo-card);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--sombra-card);
     overflow: hidden;
     width: 300px;
     text-align: center;
@@ -57,6 +75,7 @@ body {
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--sombra-card);
 }
 
 .card img {
@@ -71,21 +90,20 @@ body {
 
 .card-content h3 {
     margin: 0 0 10px;
-    color: #222;
+    color: var(--cor-destaque);
 }
 
 .card-content p {
     font-size: 14px;
-    color: #666;
+    color: var(--texto-escuro);
 }
 
 /* Estilo do rodapé */
 .footer {
-    background-color: #222;
-    color: white;
+    background-color: var(--fundo-card);
+    color: var(--texto-claro);
     text-align: center;
     padding: 10px;
-    position: relative;
-    bottom: 0;
     width: 100%;
+    border-top: 2px solid var(--cor-destaque);
 }
