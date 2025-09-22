@@ -98,6 +98,22 @@ body {
     color: var(--texto-escuro);
 }
 
+/* Estilo para os botões */
+.btn-assistir {
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: var(--texto-claro);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-assistir:hover {
+    background-color: #A00000;
+}
+
 /* Deixa os cards de vídeo com 100% de largura para que fiquem um debaixo do outro */
 .video-card {
     width: 100%;
