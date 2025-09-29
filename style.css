@@ -1,130 +1,197 @@
-/* Estilos CSS para o site de filmes e séries */
+/* style.css */
 
-/* Usando variáveis para facilitar a personalização */
+/* --- Variáveis e Reset --- */
 :root {
-    --fundo-principal: #000000;
+    --fundo-principal: #000000; /* Preto total */
     --texto-claro: #F5F5F5;
     --texto-escuro: #A0A0A0;
-    --cor-destaque: #E50914; /* Um vermelho vibrante para os títulos, por exemplo */
-    --fundo-card: #1C1C1C;
-    --sombra-card: rgba(255, 255, 255, 0.1);
+    --cor-destaque: #E50914; /* Vermelho Netflix/Stream */
+    --fundo-card: #1C1C1C; /* Cinza escuro para cards */
+    --sombra-card: rgba(229, 9, 20, 0.4); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    margin: 0;
-    background-color: var(--fundo-principal); /* Fundo preto */
-    color: var(--texto-claro); /* Texto branco/claro */
+    background-color: var(--fundo-principal);
+    color: var(--texto-claro);
+    line-height: 1.6;
 }
 
-/* Estilo do cabeçalho */
+/* --- Header e Navegação --- */
+
 .header {
     background-color: var(--fundo-card);
-    color: var(--texto-claro);
     padding: 20px;
     text-align: center;
-    border-bottom: 2px solid var(--cor-destaque);
+    border-bottom: 3px solid var(--cor-destaque);
 }
 
 .header h1 {
     color: var(--cor-destaque);
+    font-size: 2.5em;
+    margin-bottom: 5px;
 }
 
 .header p {
     color: var(--texto-escuro);
+    font-size: 1.1em;
 }
 
-/* Estilo da navegação */
 .nav {
-    background-color: var(--fundo-card);
-    overflow: hidden;
+    background-color: #0d0d0d;
     text-align: center;
+    padding: 5px 0;
 }
 
 .nav a {
     display: inline-block;
     color: var(--texto-claro);
-    padding: 14px 20px;
+    padding: 10px 20px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .nav a:hover {
-    background-color: #333;
+    background-color: var(--cor-destaque);
+    color: var(--fundo-principal);
 }
 
-/* Container principal dos cards */
+/* --- Container Principal (Usando CSS Grid) --- */
+
 .container {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 1300px;
+    
+    /* Layout de Grid: cria colunas com no mínimo 280px e distribui o espaço restante */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; 
 }
 
-/* Estilo dos cartões (cards) de filmes e séries */
+/* --- Estilos dos Cartões (Cards) --- */
+
 .card {
     background-color: var(--fundo-card);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px var(--sombra-card);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     overflow: hidden;
-    width: 300px;
-    text-align: center;
-    transition: transform 0.2s;
+    /* Faz o card ocupar 100% da altura da sua célula no grid */
+    display: flex;
+    flex-direction: column; 
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px var(--sombra-card);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px var(--sombra-card);
 }
 
 .card img {
     width: 100%;
-    height: auto;
+    /* Altura fixa para alinhar os pôsteres */
+    height: 400px; 
+    object-fit: cover; 
     display: block;
 }
 
 .card-content {
     padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Permite que o conteúdo se expanda e alinhe a altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-content h3 {
     margin: 0 0 10px;
     color: var(--cor-destaque);
+    font-size: 1.4em;
 }
 
 .card-content p {
-    font-size: 14px;
+    font-size: 0.95em;
     color: var(--texto-escuro);
+    margin-bottom: 8px;
 }
 
-/* Estilo para os botões */
-.btn-assistir {
-    display: inline-block;
-    background-color: var(--cor-destaque);
-    color: var(--texto-claro);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
+/* --- Estilo de Vídeos do YouTube Responsivo (Video Cards) --- */
 
-.btn-assistir:hover {
-    background-color: #A00000;
-}
-
-/* Deixa os cards de vídeo com 100% de largura para que fiquem um debaixo do outro */
 .video-card {
-    width: 100%;
+    /* Ocupa a largura total (todas as colunas) do container Grid */
+    grid-column: 1 / -1; 
+    background-color: var(--fundo-card);
+    padding: 20px;
 }
 
-/* Estilo do rodapé */
+.video-card .card-content {
+    padding: 0;
+    justify-content: flex-start;
+}
+
+/* Estilo do container que garante a proporção 16:9 */
+.video-responsive {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 9/16 = 0.5625 (para 16:9) */
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-responsive iframe {
+    /* Posiciona o iframe para ocupar 100% do container */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Ocultar a imagem no card de vídeo se houver */
+.video-card img {
+    display: none;
+}
+
+/* --- Footer --- */
 .footer {
     background-color: var(--fundo-card);
     color: var(--texto-claro);
     text-align: center;
-    padding: 10px;
-    width: 100%;
-    border-top: 2px solid var(--cor-destaque);
+    padding: 15px;
+    border-top: 3px solid var(--cor-destaque);
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+/* --- Responsividade (Media Queries) --- */
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .nav a {
+        padding: 8px 10px;
+    }
+
+    .container {
+        padding: 20px 10px;
+        /* Em telas muito pequenas, use apenas uma coluna */
+        grid-template-columns: 1fr; 
+    }
+
+    .card img {
+        height: 350px;
+    }
 }
